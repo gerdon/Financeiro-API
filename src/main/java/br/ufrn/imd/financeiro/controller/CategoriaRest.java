@@ -22,6 +22,9 @@ import br.ufrn.imd.financeiro.repository.CategoriaRepository;
 @RequestMapping("categorias")
 public class CategoriaRest {
 	
+	/**
+	 * Repositorio para categoria
+	 */
 	@Autowired
 	private CategoriaRepository repository;
 	
@@ -58,6 +61,12 @@ public class CategoriaRest {
 		return ResponseEntity.ok().body(categoria);
 	}
 	
+	/**
+	 * Atualizar uma categoria pelo ID
+	 * @param id
+	 * @param categoriaInformacoes
+	 * @return
+	 */
 	@PutMapping("/{id}")
 	public ResponseEntity<Categoria> update(@PathVariable(value = "id") Integer id,
 			@Valid @RequestBody Categoria categoriaInformacoes){
@@ -73,6 +82,11 @@ public class CategoriaRest {
 		return ResponseEntity.ok(updateCategoria);
 	}
 	
+	/**
+	 * Deletar uma categoria pelo ID
+	 * @param id
+	 * @return
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Categoria> delete(@PathVariable(value = "id") Integer id){
 		Categoria categoria = repository.findOne(id);
